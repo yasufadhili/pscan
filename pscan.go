@@ -186,10 +186,10 @@ func runPortScan(options ScanOptions) {
 			options.Threads, options.Timeout)
 	}
 
-	// Implement concurrent port scanning with goroutines
+	// Concurrent port scanning with goroutines
 	var wg sync.WaitGroup
 
-	// Create a simple placeholder for demonstrating argument parsing
+	
 	for port := options.StartPort; port <= options.EndPort; port++ {
 		wg.Add(1)
 		go scanPort(options, port, &wg)
@@ -207,7 +207,7 @@ func runPortScan(options ScanOptions) {
 }
 
 func main() {
-	// Define options
+	
 	var options ScanOptions
 	var portRange string
 
@@ -226,10 +226,10 @@ func main() {
 	flag.BoolVar(&options.AllPorts, "a", false, "Scan all ports (shorthand)")
 	flag.BoolVar(&options.Verbose, "v", false, "Enable verbose output (shorthand)")
 
-	// Parse command-line flags
+
 	flag.Parse()
 
-	// Display help if no arguments provided
+	
 	if len(os.Args) == 1 {
 		fmt.Println("Port Scanner - A simple tool for scanning open ports")
 		fmt.Println("Usage:")
@@ -268,6 +268,6 @@ func main() {
 		}
 	}
 
-	// Run the port scan
+	
 	runPortScan(options)
 }
